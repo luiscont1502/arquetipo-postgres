@@ -17,6 +17,7 @@
     <modules>
         <module>ws-field-jean-service</module>
         <module>ws-field-jean-persistence-postgres</module>
+		<module>ws-field-jean-persistence-security</module>
 	</modules>
     <properties>
 		<java.version>17</java.version>
@@ -26,9 +27,26 @@
 		<org.postgres>42.6.0</org.postgres>
 		<org.springdoc>1.7.0</org.springdoc>
 		<org.hibernate.validator>7.0.1.Final</org.hibernate.validator>
+		<jjwt.jackson>0.11.5</jjwt.jackson>
+		<jjwt.impl>0.11.2</jjwt.impl>
+		<jjwt.api>0.11.5</jjwt.api>
 	</properties>
 	<dependencyManagement>
 		<dependencies>
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-web</artifactId>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.tomcat.embed</groupId>
+				<artifactId>tomcat-embed-core</artifactId>
+				<version>10.1.8</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-tomcat</artifactId>
+				<scope>provided</scope>
+			</dependency>
 			<dependency>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -83,12 +101,51 @@
 				<artifactId>hibernate-validator</artifactId>
 				<version>${org.hibernate.validator}</version>
 			</dependency>
-
-
+			<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-security -->
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-security</artifactId>
+				<version>3.1.5</version>
+			</dependency>
+			<!-- https://mvnrepository.com/artifact/io.jsonwebtoken/jjwt-api -->
+			<dependency>
+				<groupId>io.jsonwebtoken</groupId>
+				<artifactId>jjwt-api</artifactId>
+				<version>${jjwt.api}</version>
+			</dependency>
+			<!-- https://mvnrepository.com/artifact/io.jsonwebtoken/jjwt-impl -->
+			<dependency>
+				<groupId>io.jsonwebtoken</groupId>
+				<artifactId>jjwt-impl</artifactId>
+				<version>${jjwt.impl}</version>
+				<scope>runtime</scope>
+			</dependency>
+			<!-- https://mvnrepository.com/artifact/io.jsonwebtoken/jjwt-jackson -->
+			<dependency>
+				<groupId>io.jsonwebtoken</groupId>
+				<artifactId>jjwt-jackson</artifactId>
+				<version>${jjwt.jackson}</version>
+				<scope>runtime</scope>
+			</dependency>
 		</dependencies>
 
 	</dependencyManagement>
-
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<excludes>
+						<exclude>
+							<groupId>org.projectlombok</groupId>
+							<artifactId>lombok</artifactId>
+						</exclude>
+					</excludes>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 
 
 </project>

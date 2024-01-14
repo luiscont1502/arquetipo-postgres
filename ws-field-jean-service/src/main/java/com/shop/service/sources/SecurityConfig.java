@@ -13,16 +13,12 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.sql.DataSource;
 
-@Configuration
-@ComponentScan(basePackages = {"com.shop.peristence.postgres.service", "com.shop.service","com.shop.persistence.security.service.impl"
-        ,"com.shop.persistence.security.service","com.shop.persistence.security.Utils","com.shop.service.service","com.shop.persistence.security.security.jwt",
-        "com.shop.persistence.security.security.filters",
-        "com.shop.peristence.postgres.repository","com.shop.persistence.security.repository"})
-@EnableJpaRepositories(basePackages = {"com.shop.peristence.postgres.repository","com.shop.persistence.security.repository"})
-@EnableTransactionManagement
-public class PostgresConfig {
-
-    @Bean
+/*@Configuration
+@ComponentScan(basePackages = {"com.shop.persistence.security.service.impl","com.shop.persistence.security.service","com.shop.persistence.security.Utils"})
+@EnableJpaRepositories(basePackages = "com.shop.persistence.security.repository")
+@EnableTransactionManagement*/
+public class SecurityConfig {
+   /* @Bean
     public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("org.postgresql.Driver");
@@ -31,14 +27,13 @@ public class PostgresConfig {
         dataSource.setPassword("luis");
         return dataSource;
     }
-
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         LocalContainerEntityManagerFactoryBean emf = new LocalContainerEntityManagerFactoryBean();
         emf.setDataSource(dataSource());
-        emf.setPackagesToScan("com.shop.peristence.postgres.entity","com.shop.persistence.security.entity");
+        emf.setPackagesToScan("com.shop.persistence.security.entity");
         emf.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
-        return emf;
+        return emf;.
     }
 
     @Bean
@@ -46,5 +41,5 @@ public class PostgresConfig {
         JpaTransactionManager transactionManager = new JpaTransactionManager();
         transactionManager.setEntityManagerFactory(entityManagerFactory().getObject());
         return transactionManager;
-    }
+    }*/
 }
