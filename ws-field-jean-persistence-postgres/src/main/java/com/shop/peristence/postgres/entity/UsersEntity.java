@@ -13,7 +13,7 @@ public class UsersEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id_users")
-    private int idUsers;
+    private Integer idUsers;
     @Basic
     @Column(name = "id_city")
     private Integer idCity;
@@ -61,5 +61,5 @@ public class UsersEntity {
     private Timestamp modificationDate;
     @ManyToOne
     @JoinColumn(name = "id_city", nullable = false,insertable=false, updatable=false)
-    private CityEntity ciudad;
+    private CityEntity city;
 }

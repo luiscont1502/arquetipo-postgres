@@ -1,6 +1,6 @@
 package com.shop.peristence.postgres.service.impl.catalogoServiceImpl;
 
-import com.shop.peristence.postgres.dto.TallaProjection;
+import com.shop.peristence.postgres.interfaces.SizesProjection;
 import com.shop.peristence.postgres.entity.catalog.SizesEntity;
 import com.shop.peristence.postgres.repository.catalogoRepository.SizesRepository;
 import com.shop.peristence.postgres.service.catalogoService.SizesService;
@@ -24,7 +24,7 @@ public class SizesServiceImpl implements SizesService {
     }
 
     @Override
-    public List<TallaProjection> findTallaDto() {
+    public List<SizesProjection> findTallaDto() {
         return sizesRepository.findTallaDto();
     }
 }

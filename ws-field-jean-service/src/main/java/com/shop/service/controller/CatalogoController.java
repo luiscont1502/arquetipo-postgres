@@ -1,6 +1,6 @@
 package com.shop.service.controller;
 
-import com.shop.peristence.postgres.dto.TallaProjection;
+import com.shop.peristence.postgres.interfaces.SizesProjection;
 import com.shop.peristence.postgres.entity.BrandEntity;
 import com.shop.peristence.postgres.entity.catalog.CityEntity;
 import com.shop.peristence.postgres.entity.catalog.SizesEntity;
@@ -32,7 +32,7 @@ public class CatalogoController {
         return ResponseEntity.ok(sizesService.findAllTalla());
     }
     @GetMapping("/talla/getAllDto")
-    private ResponseEntity<List<TallaProjection>> findAllTallaDto(){
+    private ResponseEntity<List<SizesProjection>> findAllTallaDto(){
         return ResponseEntity.ok(sizesService.findTallaDto());
     }
 

@@ -41,5 +41,8 @@ public class StaffEntity {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="id_users", referencedColumnName="id_users",insertable=false, updatable=false)
     private UsersEntity users;
+    @ManyToOne
+    @JoinColumn(name = "id_branch", referencedColumnName = "id_branch", insertable = false, updatable = false) // "cod_rol" es el nombre de la columna en la tabla personal que hace referencia al codRol de la tabla rol
+    private BranchEntity branch;
 
 }
